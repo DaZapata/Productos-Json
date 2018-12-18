@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   resources :products
+  resources :products
+
+  root 'products#index'
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :products
+    end
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
